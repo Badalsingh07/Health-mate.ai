@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Heart, FileText, TrendingUp } from "lucide-react";
 import Swal from "sweetalert2";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL|| "https://health-mateai.vercel.app/";
 
 export default function Home() {
   const router = useRouter();
