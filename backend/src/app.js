@@ -12,12 +12,12 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+const url = process.env.CLIENT_URL || 'https://health-mateai.vercel.app/';
 app.use(cors({
-  origin: process.env.CLIENT_URL, // Use environment variable or default to localhost
-  credentials: true,// Allow cookies to be sent with requests
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-
-}))
+  origin: url, // Use environment variable or default to localhost
+  credentials: true, // Allow cookies to be sent with requests
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+}));
 
 app.use('/auth', authRouter);
 app.use('/profile', profileRouter);
