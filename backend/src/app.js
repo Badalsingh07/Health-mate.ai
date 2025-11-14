@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-const url = process.env.CLIENT_URL || 'https://health-mateai.vercel.app/';
+const url = process.env.CLIENT_URL || 'https://vercel.com/badal-kumar-singhs-projects/health-mate-ai/s8mJ8uH9gA9oEFPbyp8u9QnjdKrW';
 app.use(cors({
   origin: url, // Use environment variable or default to localhost
   credentials: true, // Allow cookies to be sent with requests
