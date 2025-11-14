@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Correct frontend URL (from Vercel)
-const allowedOrigin = process.env.CLIENT_URL || 'https://health-mate-ai-ten.vercel.app';
+const allowedOrigin = process.env.CLIENT_URL ;
 
 app.use(cors({
   origin: allowedOrigin,
