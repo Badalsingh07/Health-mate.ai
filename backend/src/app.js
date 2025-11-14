@@ -1,21 +1,24 @@
 const express = require('express');
 require('dotenv').config();
-const { connectDB } = require("./config/database")
+const { connectDB } = require("./config/database");
 const { profileRouter } = require('./router/profile');
 const { authRouter } = require('./router/auth');
 const { reportRouter } = require('./router/report');
 const { vitalsRouter } = require('./router/vitial');
 const cookieParser = require('cookie-parser');
-const cors = require('cors')
+const cors = require('cors');
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-const url = process.env.CLIENT_URL || 'https://vercel.com/badal-kumar-singhs-projects/health-mate-ai/s8mJ8uH9gA9oEFPbyp8u9QnjdKrW';
+
+// Correct frontend URL (from Vercel)
+const allowedOrigin = process.env.CLIENT_URL || 'https://health-mate-ai-ten.vercel.app';
+
 app.use(cors({
-  origin: url, // Use environment variable or default to localhost
-  credentials: true, // Allow cookies to be sent with requests
+  origin: allowedOrigin,
+  credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 }));
 
@@ -25,18 +28,17 @@ app.use('/report', reportRouter);
 app.use('/vitals', vitalsRouter);
 
 app.get('/', (req, res) => {
-  res.send('Backend is running 🚀')
-})
+  res.send('Backend is running 🚀');
+});
 
 app.get('/about', (req, res) => {
-  res.send('About route 🎉')
-})
+  res.send('About route 🎉');
+});
 
 connectDB();
 
 const PORT = process.env.PORT || 5000;
 
-
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-});      
+});
