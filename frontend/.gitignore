@@ -3,8 +3,3 @@ cat > .gitignore << EOF
 node_modules/
 .env.local
 uploads/
-*.log
-.DS_Store
-dist/
-build/
-EOF
